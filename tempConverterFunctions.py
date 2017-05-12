@@ -8,7 +8,7 @@ NOTE: python3 -m py_compile <THIS_FILENAME> will compile but not run the script
 '''
 
 def convert(temp):
-	if temp < 474:
+	if temp < -474:
 		return "Temperature below Absolute Zero"
 	if type(temp) != int:
 		return "Temperature must be an integer"
