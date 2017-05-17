@@ -16,7 +16,7 @@ Most of you should have had experience working with Python 3 in 15-112, but many
 2. In this file, create a method called `convert` as follows:
 ```
 def convert(temp):
-	return 5 * (temp - 32) / 9
+  return 5 * (temp - 32) / 9
 ```
 
 We also want to add some kind of output, so for now let's use some simple print statements below the function to see our conversion:
@@ -34,3 +34,25 @@ Run this code from the command line using the command `python3 temp_converter_st
 100
 ```
 as the result in the terminal. Once you have this working, be sure to set up a Git repository and commit the file to it (ask a TA for help if you don't remember how to use Git!).
+
+3. Now go into the function and remove the parenthesis to the right of 32 and rerun this code. Oh no, an error occurred! Fear not. Fix the error and we can check the fix before re-running using the command `python3 -m py_compile temp_converter_structural.py`. If you fixed it, nothing should output, otherwise there will be some error. Simply compiling and not running the Python code can be useful because it helps to find errors before they may show later during runtime.
+
+4. Add the following test line to the print statement outputs:
+```
+print(convert("zero"))
+```
+Now re-run the code. Why did you get an error? To correct this, we will limit all temperatures to integers by adding a conditional to the top of the `convert` function:
+
+```
+if type(temp) != int:
+  return "Temperature must be an integer"
+```
+
+Now re-run the code and notice the error should be fixed and the print statements output expected output. If this is the case, be sure to add the changes to the Git repository.
+
+5. Add the line `print(convert(-500))` to the script and re-run. Of course, remembering your basic physics leaves you distressed at this point because you know this answer is in error – Absolute Zero is at –474 degrees Fahrenheit or -270 degrees Celsius, making this result impossible. To make sure our program doesn't give silly answers, we will add another line after the last correction (and before the calculation):
+
+```
+if temp < -474:
+    return "Temperature below Absolute Zero"
+```
