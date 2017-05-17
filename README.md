@@ -54,5 +54,34 @@ Now re-run the code and notice the error should be fixed and the print statement
 
 ```
 if temp < -474:
-    return "Temperature below Absolute Zero"
+  return "Temperature below Absolute Zero"
 ```
+
+Re-run the code. Assuming the output is as expected, save the revision to the Git repository.
+
+6. Of course, we have only half the temperature conversion problem – converting Fahrenheit to Celsius – and have no capability to convert Celsius to Fahrenheit. Create a new branch in git called `exp` (Again, ask a TA if you don't remember this from previous labs). Now in your code, add another argument called `measure` and using an `if ... else` construct, correct the code so that either a Fahrenheit or Celsius temperature is converted. Set up the `measure` argument so its default value is "F". Add the statements below:
+
+```
+print(convert(0, "C"))
+print(convert(10, "C"))
+print(convert(100, "C"))
+print(convert(-280, "C"))
+```
+
+Re-run the code. Assuming the output is as expected, save the revision to the Git repository.
+
+7. Looking at the results, we see that code is still problematic: we get a result for –280 oC even though we know that value is below Absolute Zero. There are a number of ways to correct this, but for learning purposes here, we are going to create a new method called is_below_absolute_zero which has two arguments: temp and measure. This method will simply return a boolean of true if the temperature for the measurement system is below the critical value. Create the basic structure for this method now.
+
+Add the following code so your complete method looks like this:
+
+```
+def is_below_absolute_zero(temp, measure):
+  return (temp < -454 and measure == "F") or (temp < -270 and measure == "C")
+```
+
+Note the use of boolean logic to check if our temperature is below Absolute Zero based on the measure. This will return `True` if the value is below Absolute Zero, and `False` otherwise. Furthermore, it will crash with non-integer temperatures (which we checked for in the `convert` method so we are safe here).
+
+Rerun the code and make sure that everything is working properly. If so, save this code to the git repository. Checkout the `master` branch, and then merge the `exp` branch onto the `master` branch. (Again, ask a TA is you don't remember how to do this!)
+
+## :exclamation: STOP
+Show a TA that you have completed the structural temp conversion program and have properly saved the code to git. Make sure the TA initials your sheet.
