@@ -85,3 +85,101 @@ Rerun the code and make sure that everything is working properly. If so, save th
 
 ## :exclamation: STOP
 Show a TA that you have completed the structural temp conversion program and have properly saved the code to git. Make sure the TA initials your sheet.
+
+# Part 2: Object-Oriented Programming
+
+Python is inherently what is called an **Object-Oriented language**, meaning everything is packaged into what is called an *Object*, which is essentially an outline of a general thing. Classes have *attributes* and *methods*. An *attribute* is something an object has. It is some variable the object contains. A *method* is something an object can do. Here is a visual example:
+
+```
+class pythonClassExample(object):
+    def __init__(self):
+        self.x = 10
+
+    def increment(self):
+        self.x += 10
+```
+
+In this example, the class named `pythonClassExample` has both an *attribute* of `x` and a *method* of `increment`. Note that the *attribute* `x` persists, so the *method* `increment` is destructive and modifies `x`. We can create an instance of the `pythonClassExample` class by using the following statement:
+
+```
+newClassInstance = pythonClassExample()
+```
+
+Now the variable newClassInstance refers to an instance of the `pythonClassExample` class. The following code snippet illustrates how to work with Python classes, syntactically:
+
+```
+newClassInstance = pythonClassExample()
+print(newClassInstance.x) # prints 10
+newClassInstance.increment()
+print(newClassInstance.x) # prints 20
+```
+
+Note that we do not pass any variables in for *self* when initializing or calling the `increment` function. This value refers to the class instance, which is indirectly passed using the `newClassInstance.<something>` syntax. Similarly, imagine we added the following method to the class:
+
+```
+def incrementBy(self, incrementValue):
+  self.x += incrementValue
+
+newClassInstance = pythonClassExample()
+newClassInstance.incrementBy(5)
+print(newClassInstance.x) # prints 15
+```
+
+This shows the syntax for passing arguments to a Python class method. Now, with this knowledge, we will write the same Temp Converter using such Object-Oriented techniques.
+
+1. Create a new branch called `object_oriented` in your git repository and switch to it.
+
+2. Create a new file called `temp_converter_object_oriented.py` and open it with your favorite editor/IDE.
+
+3. Start by creating the general outline for a Python class:
+
+```
+class TempConverter(object):
+  def __init__(self, initialTemp, measure='F'):
+    return
+```
+
+4. Now write the `convert` and `is_below_absolute_zero` functions from the structural programming temp converter as class methods. Your general Python class will look like such:
+
+```
+class TempConverter(object):
+  def __init__(self, temp, measure="F"):
+    self.temp = temp
+    self.measure = measure
+
+  def convert(self):
+    # converts the temperature from measure to the opposite
+
+  def is_below_absolute_zero(self):
+    # checks if the temperature is below absolute zero
+```
+
+The bodies for these methods will be similar to the functions you wrote before, but should call the class's values for `temp` and `measure`. You can check the expected behavior by adding the following code:
+
+```
+tempConverterObject = TempConverter(32, "C")
+print(tempConverterObject.convert())
+tempConverterObject.temp = 50
+print(tempConverterObject.convert())
+tempConverterObject.temp = 212
+print(tempConverterObject.convert())
+tempConverterObject.temp = "zero"
+print(tempConverterObject.convert())
+tempConverterObject.temp = -500
+print(tempConverterObject.convert())
+```
+
+running the code in terminal, and seeing:
+
+```
+89.6
+122.0
+413.6
+Temperature must be an integer
+Temperature below Absolute Zero
+```
+
+5. Once you have confirmed the output is as expected, be sure to commit the code to git and then merge the `object_oriented` branch onto `master`.
+
+## :exclamation: STOP
+Show a TA that you have completed the Object-Oriented temp conversion program and have properly saved the code to git. Make sure the TA initials your sheet.
